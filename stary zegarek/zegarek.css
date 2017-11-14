@@ -1,0 +1,53 @@
+.tloTarcza {
+    fill: #ffffff;
+    stroke-width: 0;
+}
+
+.ampmtext {
+    fill: white;
+    cursor: pointer;
+    stroke-width: 0;
+    font-family: sans-serif;
+}
+
+.pola {
+
+    fill: #ff0005;
+    opacity: 0;
+}
+
+.srodkowyspot {
+    fill: #6197cd;
+    stroke-width: 0;
+}
+
+.aktywnyspot {
+    fill: #6197cd;
+    stroke-width: 0;
+    /*cursor: pointer;*/
+}
+
+.aktywnyspotampm {
+    fill: #6197cd;
+    stroke-width: 0;
+    cursor: pointer;
+}
+
+.aktywnyspotszary {
+    fill: #d0ccc8;
+    stroke-width: 0;
+    /*cursor: pointer;*/
+}
+
+.aktywnyspotszaryciemny {
+    fill: #9d958d;
+    opacity: 0.6;
+    stroke-width: 0;
+    /*cursor: pointer;*/
+}
+
+.line {
+    stroke: #6197cd;
+    stroke-width: 2px;
+}
+

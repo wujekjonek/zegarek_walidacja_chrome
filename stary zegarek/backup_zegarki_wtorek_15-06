@@ -1,0 +1,229 @@
+CreateClock();
+
+
+
+
+
+
+function CreateClock() {
+
+    clockDiameter = 180;
+    //    srednica = 180;
+    //    mouseCoordinates
+
+
+    var myDiv = document.createElement('div');
+    myDiv.id = "stronaDoUstawianiaGodzin";
+    // myDiv.clas = "cale";
+    // myDiv.class = "tlo";
+    // myDiv.innerHTML = "xxxxxxxxxxxxxxxxxxx";
+    document.body.appendChild(myDiv);
+
+
+    svgGodziny();
+    tarczaGodziny();
+    tarczaMinuty();
+    spotyGodzin();
+    spotyMinut();
+    srodekTarczyGodzin();
+    srodekTarczyMinut();
+
+}
+//----------------------------------------------------------------------------------------------------------------------
+function svgGodziny() {
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("id", "panelGodzin");
+    svg.setAttribute("class", "cale");
+    svg.setAttribute("width", ((clockDiameter * 2) + 20).toString());
+    svg.setAttribute("height", clockDiameter.toString());
+    let div = document.getElementById("stronaDoUstawianiaGodzin");
+    div.appendChild(svg);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+function tarczaGodziny() {
+    let svg = document.getElementById("panelGodzin");
+    let svgNS = "http://www.w3.org/2000/svg";
+    let myCircle = document.createElementNS(svgNS, "circle");
+    myCircle.setAttribute("class", "tloTarcza");
+    myCircle.setAttribute("cx", (clockDiameter * 0.5).toString());
+    myCircle.setAttribute("cy", (clockDiameter * 0.5).toString());
+    myCircle.setAttribute("r", (clockDiameter * 0.5).toString());
+
+    myCircle.onmousemove = function showCoordinates(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+        let mouseCoordinates = "polozenie kursora na tarczy godzin X: " + x + ", Y: " + y;
+        document.getElementById("czytajGodzine").innerHTML = mouseCoordinates;
+
+
+
+
+
+        // let svg = document.getElementById("panelGodzin");
+        // let svgNS = "http://www.w3.org/2000/svg";
+        // let myLine = document.createElementNS(svgNS, "line");
+        // myLine.setAttribute("class", "line");
+        // // myLine.setAttribute("id", "kreskaGodziny");
+        // myLine.setAttribute("x1", (clockDiameter * 0.5).toString());
+        // myLine.setAttribute("y1", (clockDiameter * 0.5).toString());
+        // myLine.setAttribute("x2", (x - document.getElementById("panelGodzin").getBoundingClientRect().left).toString());
+        // myLine.setAttribute("y2", (y - document.getElementById("panelGodzin").getBoundingClientRect().top).toString());
+        // svg.appendChild(myLine);
+        // let wspolczynnikKierunkowy = "(y2 - y1)/(x2-x1)";
+        // let wspolczynnikKierunkowy = ((y - document.getElementById("panelGodzin").getBoundingClientRect().top) - (clockDiameter * 0.5)) / ((x - document.getElementById("panelGodzin").getBoundingClientRect().left) - (clockDiameter * 0.5));
+
+
+
+        let wspolczynnikKierunkowy = ((y - document.getElementById("panelGodzin").getBoundingClientRect().top) - 0 / ((x - document.getElementById("panelGodzin").getBoundingClientRect().left) - 0));
+
+
+
+        // document.getElementById("wspolczynnik").innerHTML = wspolczynnikKierunkowy;
+        // let wspolczynnikKierunkowy = "(y2 - y1)/(x2-x1)";
+
+        document.getElementById("wspolczynnik").innerHTML = "kąt nachylenia: "+(Math.round(wspolczynnikKierunkowy)) ;
+        document.getElementById("sinus").innerHTML = "x1: " + (clockDiameter * 0.5);
+        document.getElementById("cosinus").innerHTML = "y1: " + (clockDiameter * 0.5);
+        document.getElementById("tangens").innerHTML = "x2: " +  (x - document.getElementById("panelGodzin").getBoundingClientRect().left);
+        document.getElementById("atangens").innerHTML = "y2: " + (y - document.getElementById("panelGodzin").getBoundingClientRect().top);
+
+
+
+
+
+
+        // let wspolczynnikKierunkowy = (y2 - y1)/(x2-x1);
+
+
+
+     //   angle = atan2(mouseY - circleCenterY, mouseX - circleCenterX);
+
+
+        // Math.sin()
+        // Math.cos()
+        // Math.tan()
+
+        // Math.acos()
+        // Math.asin()
+        // Math.atan()
+        // Math.atan2()
+    };
+    svg.appendChild(myCircle);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+function tarczaMinuty() {
+    let svg = document.getElementById("panelGodzin");
+    let svgNS = "http://www.w3.org/2000/svg";
+    let myCircle = document.createElementNS(svgNS, "circle");
+    myCircle.setAttribute("class", "tloTarcza2");
+    myCircle.setAttribute("cx", ((clockDiameter * 0.5) + clockDiameter + 10).toString());
+    myCircle.setAttribute("cy", (clockDiameter * 0.5).toString());
+    myCircle.setAttribute("r", (clockDiameter * 0.5).toString());
+
+    myCircle.onmousemove = function showCoordinates() {
+        let x = event.clientX;
+        let y = event.clientY;
+        let mouseCoordinates = "polozenie kursora na tarczy minut X: " + x + ", Y: " + y;
+        document.getElementById("czytajMinute").innerHTML = mouseCoordinates;
+        let svg = document.getElementById("panelGodzin");
+        let svgNS = "http://www.w3.org/2000/svg";
+        let myLine = document.createElementNS(svgNS, "line");
+        myLine.setAttribute("class", "line");
+        // myLine.setAttribute("id", "kreskaGodziny");
+        myLine.setAttribute("x1", ((clockDiameter * 0.5) + clockDiameter + 10).toString());
+        myLine.setAttribute("y1", (clockDiameter * 0.5).toString());
+        myLine.setAttribute("x2", (x - document.getElementById("panelGodzin").getBoundingClientRect().left).toString());
+        myLine.setAttribute("y2", (y - document.getElementById("panelGodzin").getBoundingClientRect().top).toString());
+        svg.appendChild(myLine);
+        console.log(" minuty ");
+    };
+    svg.appendChild(myCircle);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+function spotyGodzin() {
+    // let i;
+    let svg = document.getElementById("panelGodzin");
+    for (let i = 1; i < 25; i++) {
+        let svgNS = "http://www.w3.org/2000/svg";
+        let myCircle = document.createElementNS(svgNS, "circle");
+        myCircle.setAttribute("class", "aktywnyspotszary");
+        myCircle.setAttribute("id", i.toString());
+        // myCircle.setAttribute("onclick", "koniecGodzin()");
+        // myCircle.setAttribute("onmouseover", "ustawianieGodziny()");
+
+        myCircle.onmouseover = function wypisz() {
+            document.getElementById("godzina").innerHTML = "godzina " + i.toString();
+        };
+
+        myCircle.setAttribute("cx", ((clockDiameter * 0.02) + ((clockDiameter * 0.04))).toString());
+        myCircle.setAttribute("cy", (clockDiameter * 0.5).toString());
+        myCircle.setAttribute("r", (clockDiameter * 0.04).toString());
+        myCircle.setAttribute("transform", "rotate( " + ((i * 15) + 90) + "," + clockDiameter / 2 + " ," + clockDiameter / 2 + ")");
+        svg.appendChild(myCircle);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+function spotyMinut() {
+    let svg = document.getElementById("panelGodzin");
+    for (let i = 0; i < 60; i++) {
+        let svgNS = "http://www.w3.org/2000/svg";
+        let myCircle = document.createElementNS(svgNS, "circle");
+        if (i % 5 == 0) {
+            myCircle.setAttribute("class", "aktywnyspotszary");
+            myCircle.setAttribute("r", (clockDiameter * 0.02).toString());
+        } else {
+            myCircle.setAttribute("class", "aktywnyspotszary");
+            myCircle.setAttribute("r", ((clockDiameter * 0.02) / 2).toString());
+        }
+        myCircle.setAttribute("id", i.toString());
+        // myCircle.setAttribute("onclick", "koniecMinut()");
+        // myCircle.setAttribute("onmouseover", "ustawianieMinuty()");
+
+        myCircle.onmouseover = function wypisz() {
+            document.getElementById("minuta").innerHTML = "minuta " + i.toString();
+        };
+
+        // myCircle.setAttribute("cx", (((clockDiameter * 0.02) + ((clockDiameter * 0.02)))).toString());
+        myCircle.setAttribute("cx", (190 + 10).toString());
+        myCircle.setAttribute("cy", (clockDiameter * 0.5).toString());
+        myCircle.setAttribute("fill", "lightblue");
+        // myCircle.setAttribute("transform", "rotate( " + ((i * 6) + 90) + "," + clockDiameter * 0.5 + " ," + clockDiameter * 0.5 + ")");
+        myCircle.setAttribute("transform", "rotate( " + ((i * 6) + 90) + "," + (((clockDiameter * 0.5) + clockDiameter) + 10) + " ," + clockDiameter * 0.5 + ")");
+        svg.appendChild(myCircle);
+    }
+}
+
+
+//  center of the clock face
+//  center dial
+
+//----------------------------------------------------------------------------------------------------------------------
+function srodekTarczyGodzin() {
+    let svg = document.getElementById("panelGodzin");
+    let svgNS = "http://www.w3.org/2000/svg";
+    let myCircle = document.createElementNS(svgNS, "circle");
+    myCircle.setAttribute("class", "srodkowyspot");
+    myCircle.setAttribute("cx", ((clockDiameter * 0.5)).toString());
+    myCircle.setAttribute("cy", (clockDiameter * 0.5).toString());
+    myCircle.setAttribute("r", (clockDiameter * 0.01).toString());
+    svg.appendChild(myCircle);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+function srodekTarczyMinut() {
+    let svg = document.getElementById("panelGodzin");
+    let svgNS = "http://www.w3.org/2000/svg";
+    let myCircle = document.createElementNS(svgNS, "circle");
+    myCircle.setAttribute("class", "srodkowyspot");
+    myCircle.setAttribute("cx", ((clockDiameter * 0.5) + clockDiameter + 10).toString());
+    myCircle.setAttribute("cy", (clockDiameter * 0.5).toString());
+    myCircle.setAttribute("r", (clockDiameter * 0.01).toString());
+    svg.appendChild(myCircle);
+
+}
+
+

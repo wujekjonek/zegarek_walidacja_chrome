@@ -1,0 +1,43 @@
+.line {
+    stroke: #6197cd;
+    stroke-width: 1.5px;
+    opacity: 1;
+}
+
+.dialColor {
+    fill: #ffffff;
+}
+
+.centerdot {
+    fill: #6197cd;
+    stroke-width: 0;
+}
+
+/* ----------------------------------------------- */
+
+.aktywnyspotszary {
+
+    /*fill: #ff0005;*/
+    fill: #d0ccc8;
+    opacity: 0.5;
+
+}
+
+.aktywnyspot {
+    fill: #6197cd;
+    stroke-width: 0;
+    /*cursor: pointer;*/
+}
+
+.tlo {
+
+    fill: #ff0005;
+    opacity: 1;
+}
+
+.cale {
+    fill: #2f38ff;
+    margin-top: 20px;
+    /*margin-left: 20px;*/
+
+}
